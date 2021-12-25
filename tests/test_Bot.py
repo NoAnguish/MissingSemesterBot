@@ -5,7 +5,7 @@ from bot.Bot import Bot
 
 def test_reverse_ok():
     data = "abcd"
-    expected_result = "dcba"
+    expected_result = "dcbaKekw"
 
     result = Bot().reverse_message(data)
 
@@ -15,7 +15,7 @@ def test_reverse_ok():
 def test_reverse_empty():
     result = Bot().reverse_message("")
 
-    assert result == ""
+    assert result == "Kekw"
 
 
 def test_reverse_non_str():
