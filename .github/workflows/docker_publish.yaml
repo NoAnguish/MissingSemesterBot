@@ -3,7 +3,7 @@ name: Deploy Image
 on:
   workflow_run:
     workflows:
-      - "Release Tests"
+      - "Release tests"
     types:
       - completed
 
