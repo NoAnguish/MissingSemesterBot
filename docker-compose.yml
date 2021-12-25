@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  noanguishms:
+    image: noanguish/missingsemesterbot:latest
+    labels:
+      - "com.centurylinklabs.watchtower.scope=noanguish"
+    environment:
+      TOKEN: "${TOKEN}"
+
+  watchtower_noanguish:
+    image: containrrr/watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: --interval 20 --scope noanguish
+    labels:
+      - "com.centurylinklabs.watchtower.scope=noanguish"
+
