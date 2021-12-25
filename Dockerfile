@@ -9,5 +9,3 @@ RUN pip3 install -r /usr/local/workspace/requirements.txt
 
 ENV TOKEN=$TOKEN
 CMD python3 /usr/local/workspace/run.py
-
-WORKDIR /usr/local/workspace
