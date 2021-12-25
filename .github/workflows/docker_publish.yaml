@@ -1,0 +1,24 @@
+name: Deploy Image
+
+on:
+  workflow_run:
+    workflows:
+      - "Release Tests"
+    types:
+      - completed
+
+jobs:
+  on-success:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    steps:
+      - uses: actions/checkout@master
+
+      - name: Login to docker hub
+        run: echo ${{ secrets.DOCKER_ACCESS_TOKEN }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
+
+      - name: Build image
+        run: docker build -t noanguish/missingsemesterbot:latest .
+
+      - name: Push image
+        run: docker push noanguish/missingsemesterbot:latest
